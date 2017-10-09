@@ -11,20 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MainController@mainPage')->name('mainPage');
 
-Route::get('/404', function () {
-    return view('404');
-});
+Route::get('/404', 'MainController@pageNotFound')->name('pageNotFound');
 
-//Route::get('/', 'MainController@index');
+Route::get('/test', 'TestController@testGetMethod');
 
-Route::redirect('/here', '/there', 302);
+Route::post('/test', 'TestController@testPostMethod');
 
-//Route::get('/404', 'MainController@pageNotFound');
+Route::get('test/redirect', 'TestController@redirectPage');
 
-//Route::get('/test', 'TestController@testGetMethod');
-
-//Route::post('/test', 'TestController@testPostMethod');
