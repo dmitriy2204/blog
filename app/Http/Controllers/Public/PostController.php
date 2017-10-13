@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Public;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\Controller;
 
-class PostController extends MainController
+class PostController extends Controller
 {
 	public function one($id)
 	{

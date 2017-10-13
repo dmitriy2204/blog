@@ -92,7 +92,8 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapPublicRoutes()
     {
-        Route::middleware('web')  
+        Route::middleware('web')
+             ->prefix('/public')  
              ->namespace($this->publicNamespace)
              ->group(base_path('routes/public.php'));
     }
