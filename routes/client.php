@@ -8,7 +8,7 @@ Route::group(['prefix' => '/post'], function (){
 	Route::post('/add', 'PostController@add')
 		->name('public.post.add');
 
-	Route::post('/edit/{id}', 'PostController@edit')
+	Route::match(['get', 'post'], '/edit/{id}', 'PostController@edit')
 		->where('id', '[0-9]+')
 		->name('public.post.edit');
 
@@ -25,7 +25,7 @@ Route::group(['prefix' => '/user'], function (){
 	Route::match(['get', 'post'], '/add', 'UserController@add')
 		->name('public.user.add');
 
-	Route::get('/login', 'UserController@login');	
+	Route::match(['get', 'post'], '/login', 'UserController@login');	
 
 	Route::get('/logout', 'UserController@logout');	
 

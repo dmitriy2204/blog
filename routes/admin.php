@@ -8,10 +8,10 @@ Route::group(['prefix' => '/user'], function (){
 		->where('id', '[0-9]+')
 		->name('admin.user.one');	
 
-	Route::post('/add', 'UserController@add')
+	Route::match(['get', 'post'], '/add', 'UserController@add')
 		->name('admin.user.add');
 
-	Route::post('/edit/{id}', 'UserController@edit')
+	Route::match(['get', 'post'], '/edit/{id}', 'UserController@edit')
 		->where('id', '[0-9]+')
 		->name('admin.user.edit');
 
@@ -28,10 +28,10 @@ Route::group(['prefix' => '/post'], function (){
 		->where('id', '[0-9]+')
 		->name('admin.post.one');	
 
-	Route::post('/add', 'PostController@add')
+	Route::match(['get', 'post'], '/add', 'PostController@add')
 		->name('admin.post.add');
 
-	Route::post('/edit/{id}', 'PostController@edit')
+	Route::match(['get', 'post'], '/edit/{id}', 'PostController@edit')
 		->where('id', '[0-9]+')
 		->name('admin.post.edit');
 
