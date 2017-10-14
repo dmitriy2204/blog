@@ -16,7 +16,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
     protected $adminNamespace = 'App\Http\Controllers\Admin';
-    protected $publicNamespace = 'App\Http\Controllers\Public';
+    protected $clientNamespace = 'App\Http\Controllers\Client';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAdminRoutes();
         
-        $this->mapPublicRoutes();
+        $this->mapClientRoutes();
 
         //
     }
@@ -90,11 +90,11 @@ class RouteServiceProvider extends ServiceProvider
              ->group(base_path('routes/admin.php'));
     }
 
-    protected function mapPublicRoutes()
+    protected function mapClientRoutes()
     {
         Route::middleware('web')
-             ->prefix('/public')  
-             ->namespace($this->publicNamespace)
-             ->group(base_path('routes/public.php'));
+             ->prefix('/')  
+             ->namespace($this->clientNamespace)
+             ->group(base_path('routes/client.php'));
     }
 }
