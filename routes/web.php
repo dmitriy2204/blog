@@ -13,11 +13,17 @@
 
 Route::get('/', 'MainController@mainPage')->name('mainPage');
 
+Route::get('/403', 'MainController@accessDenied')->name('accessDenied');
 Route::get('/404', 'MainController@pageNotFound')->name('pageNotFound');
+Route::get('/500', 'MainController@internalError')->name('internalError');
+
+Route::get('/about', 'MainController@aboutPage')->name('aboutPage');
 
 Route::get('/test', 'TestController@testGetMethod');
 
 Route::post('/test', 'TestController@testPostMethod');
 
 Route::get('test/redirect', 'TestController@redirectPage');
+
+Route::get('test/some', 'TestController@some');
 

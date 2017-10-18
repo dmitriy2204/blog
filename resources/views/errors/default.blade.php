@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>404</title>
+        <title>{{ $title }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -21,38 +21,17 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
+            .show_error {
+                width: 300px;
+                background-color: #e1e5ec;
+                padding: 25px 27px;
+                margin: 15% auto;
+                border-radius: 4px;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
+            .number, .text {
                 text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-                background: linear-gradient(to bottom, #F6EFD2, #CEAD78);
-                box-shadow: -3px 4px 5px;
-            }
-
-            .title p {
-                color: #ADADA8;
             }
 
             .links > a {
@@ -67,15 +46,16 @@
                 padding: 10px 15px;
                 box-shadow: -3px 4px 5px;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-           <h1>404 Page Not Found</h1>
+        <div class="show_error">
+            <div class="number">
+                @yield('number', 'Error`s number')
+            </div>
+            <div class="text">
+                @yield('text', 'Error`s text')
+            </div>
         </div>
     </body>
 </html>

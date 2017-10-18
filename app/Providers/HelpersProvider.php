@@ -3,22 +3,21 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
 
-class AppServiceProvider extends ServiceProvider
+class HelpersProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Bootstrap the application services.
      *
      * @return void
      */
     public function boot()
     {
-        View::share('userName', 'Гость');
+        require_once(app_path() . '/helpers.php');
     }
 
     /**
-     * Register any application services.
+     * Register the application services.
      *
      * @return void
      */

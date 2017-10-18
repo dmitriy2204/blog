@@ -41,5 +41,10 @@ HTML;
 
 		return redirect()->route('mainPage');
 	}
+
+	public function some()
+	{
+		return myFormatDate(time());
+	}
 	
 }
