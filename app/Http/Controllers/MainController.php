@@ -9,14 +9,21 @@ class MainController extends Controller
 	public function mainPage()
 	{
 		return view('pages.main', [
-			'title' => 'Main Page'
+			'title' => 'Главная страница'
 		]);
 	}
 
 	public function aboutPage()
 	{
 		return view('pages.about', [
-			'title' => 'About us'
+			'title' => 'Обо мне'
+		]);
+	}
+
+	public function feedbackPage()
+	{
+		return view('pages.feedback', [
+			'title' => 'Обратная связь'
 		]);
 	}
 

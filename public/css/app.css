@@ -54,6 +54,27 @@ hr {
 	margin-bottom: 10px;
 }
 
+.about {
+	text-align: center;
+}
+
+.about img {
+	width: 20%;
+	height: auto;
+}
+
+.feedback input, textarea {
+	width: 100%;
+	margin-bottom: 15px;
+	border: 1px solid #e0e0e0;
+	border-radius: 6px;
+}
+/*
+.one-post {
+	margin: 0 auto;
+	text-align: center;
+}
+*/
 
 /* Sidebar */
 

@@ -44,7 +44,7 @@ HTML;
 
 	public function some()
 	{
-		return myFormatDate(time());
+		echo date("l jS");
 	}
 	
 }

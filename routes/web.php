@@ -19,9 +19,11 @@ Route::get('/500', 'MainController@internalError')->name('internalError');
 
 Route::get('/about', 'MainController@aboutPage')->name('aboutPage');
 
-Route::get('/test', 'TestController@testGetMethod');
+Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage');
 
-Route::post('/test', 'TestController@testPostMethod');
+Route::get('/test', 'TestController@some');
+
+Route::post('/test', 'TestController@some');
 
 Route::get('test/redirect', 'TestController@redirectPage');
 

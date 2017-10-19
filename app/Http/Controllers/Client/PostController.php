@@ -9,7 +9,9 @@ class PostController extends Controller
 {
 	public function one($id)
 	{
-		return 'Public: View Post id = ' . $id;
+		return view('pages.one', [
+			'title' => 'Просмотр статьи'
+		]);
 	}
 
 	public function add()

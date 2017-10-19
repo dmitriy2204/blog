@@ -10,16 +10,16 @@
 			<nav class="widget-navigation">
 				<ul class="footer-menu">
 					<li>
-						<a href="#">Главная</a>
+						<a href="/">Главная</a>
 					</li>
 					<li>
-						<a href="#">Тест</a>
+						<a href="/test">Тест</a>
 					</li>
 					<li>
-						<a href="#">Обо мне</a>
+						<a href="/about">Обо мне</a>
 					</li>
 					<li>
-						<a href="#">Обратная связь</a>
+						<a href="/feedback">Обратная связь</a>
 					</li>
 				</ul>
 			</nav>
