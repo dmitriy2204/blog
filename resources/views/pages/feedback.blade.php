@@ -1,7 +1,7 @@
 @extends('pages.main')
 
 @section('left-column')
-    @include('parts.about-content')
+    @include('parts.feedback-content')
 @endsection
  
 

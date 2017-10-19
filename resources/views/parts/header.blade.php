@@ -1,20 +1,20 @@
 <header class="header boxed push-down-45">
 	<div class="container">
-		<div class="logo col-xs-12 col-md-4"><img src="upload/logo.png" alt=""></div>
+		<div class="logo col-xs-12 col-md-4"><img src="/upload/logo.png" alt=""></div>
 	
 		<nav class="navbar col-xs-12 col-md-8">
 			<ul class="navigation">
 				<li class="header-navbar">
-					<a href="#">Главная</a>
+					<a href="/">Главная</a>
 				</li>
 				<li class="header-navbar">
-					<a href="#">Тест</a>
+					<a href="/test">Тест</a>
 				</li>
 				<li class="header-navbar">
-					<a href="#">Обо мне</a>
+					<a href="/about">Обо мне</a>
 				</li>
 				<li class="header-navbar">
-					<a href="#">Обратная связь</a>
+					<a href="/feedback">Обратная связь</a>
 				</li>
 			</ul>
 		</nav>
