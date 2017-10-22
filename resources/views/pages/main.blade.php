@@ -6,5 +6,5 @@
 
 @section('right-column')
     @include('widgets.me')
-    @include('widgets.categories')
-@endsection       
+    @include('parts.sidebar')
+@endsection 

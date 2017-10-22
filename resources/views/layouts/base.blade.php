@@ -9,17 +9,13 @@
 </head>
 
 <body>
-@section('header')
-@show
+@yield('header')
 
-@section('content')
-@show
+@yield('content')
 
-@section('footer')
-@show
+@yield('footer')
 
-@section('footer_copyrights')
-@show
+@yield('footer_copyrights')
 
 </body>
 

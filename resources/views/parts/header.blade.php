@@ -1,6 +1,6 @@
 <header class="header boxed push-down-45">
 	<div class="container">
-		<div class="logo col-xs-12 col-md-4"><img src="/upload/logo.png" alt=""></div>
+		<div class="logo col-xs-12 col-md-4"><a href="/"><img src="/upload/logo.png" alt=""></a></div>
 	
 		<nav class="navbar col-xs-12 col-md-8">
 			<ul class="navigation">
