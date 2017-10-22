@@ -31,13 +31,3 @@ Route::group(['prefix' => '/user'], function (){
 
 });
 
-/*
-Route::get('/', 'MainController@mainPage')->name('mainPage');
-
-Route::get('/403', 'MainController@accessDenied')->name('accessDenied');
-Route::get('/404', 'MainController@pageNotFound')->name('pageNotFound');
-Route::get('/500', 'MainController@internalError')->name('internalError');
-
-Route::get('/about', 'MainController@aboutPage')->name('aboutPage');
-
-Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage');

@@ -1,13 +1,13 @@
 <div class="boxed  push-down-45">
     <div class="meta">
-        <img class="wp-post-image" src="upload/blog-image.jpg" alt="Blog image" width="748" height="324">
+        <img class="post-image" src="upload/blog-image.jpg" alt="Blog image" width="748" height="324">
         <div class="row">
             <div class="col-xs-12  col-sm-10  col-sm-offset-1">
                 <div class="meta__container--without-image">
                     <div class="row">
                         <div class="col-xs-12  col-sm-8">
                             <div class="meta__info">
-                                <a href="#">Статьи</a>
+                                <a href="/">Статьи</a>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4">
@@ -24,7 +24,7 @@
         <div class="col-xs-10  col-xs-offset-1">
             <div class="post-content--front-page">
                 <h2 class="front-page-title">
-                    <a href="post.html">Основной заголовок поста c картинкой</a>
+                    <a href="/post/1">Основной заголовок поста c картинкой</a>
                 </h2>
                 <h3>Подзаголовок поста</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="col-xs-12  col-sm-8">
                                 <div class="meta__info">
-                                    <a href="#">Статьи</a>
+                                    <a href="/">Статьи</a>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-4">
@@ -66,7 +66,7 @@
             <div class="col-xs-10  col-xs-offset-1">
                 <div class="post-content--front-page">
                     <h2 class="front-page-title">
-                        <a href="post.html">Основной заголовок поста без картинки</a>
+                        <a href="/post/2">Основной заголовок поста без картинки</a>
                     </h2>
                     <h3>Подзаголовок поста</h3>
                     <p>

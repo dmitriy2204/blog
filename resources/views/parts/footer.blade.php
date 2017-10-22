@@ -1,37 +1,13 @@
 <footer class="footer boxed">
 	<div class="container">
 		<div class="col-xs-12  col-md-3">
-			<h6>Я В СОЦИАЛЬНЫХ СЕТЯХ</h6>
-			<hr>
+			@include('widgets.social')
 		</div>
 		<div class="col-xs-12  col-md-3 col-md-offset-1">
-			<h6>НАВИГАЦИЯ</h6>
-			<hr>
-			<nav class="widget-navigation">
-				<ul class="footer-menu">
-					<li>
-						<a href="/">Главная</a>
-					</li>
-					<li>
-						<a href="/test">Тест</a>
-					</li>
-					<li>
-						<a href="/about">Обо мне</a>
-					</li>
-					<li>
-						<a href="/feedback">Обратная связь</a>
-					</li>
-				</ul>
-			</nav>
+			@include('widgets.navigation')
 		</div>
 		<div class="col-xs-12  col-md-3 col-md-offset-1">
-			<h6>КОНТАКТЫ</h6>
-			<hr>
-			<span class="contact_text">
-				<span class="contact_title">Фамилия Имя Отчество</span><br>
-				Email: <br>
-				VK: <br>
-			</span>
+			@include('widgets.contacts')
 		</div>
 	</div>
 	

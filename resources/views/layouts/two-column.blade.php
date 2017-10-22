@@ -26,7 +26,3 @@
 @section('footer_copyrights')
 	@include('parts.footer_copyrights')    
 @endsection
-
-</body>
-
-</html>

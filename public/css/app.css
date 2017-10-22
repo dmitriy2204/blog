@@ -69,12 +69,16 @@ hr {
 	border: 1px solid #e0e0e0;
 	border-radius: 6px;
 }
-/*
-.one-post {
-	margin: 0 auto;
-	text-align: center;
+
+.push-down-30 {
+	margin-bottom: 30px;
 }
-*/
+
+.post-image {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	margin-bottom: 10px;
+}
 
 /* Sidebar */
 
@@ -144,6 +148,11 @@ hr {
 	list-style: none;
 	padding-left: 0;
 }
+
+.widget-favourite {
+	width: 100%;
+}
+
 
 
 /* Footer */
