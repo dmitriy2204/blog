@@ -22,10 +22,17 @@ Route::group(['prefix' => '/user'], function (){
 		->where('id', '[0-9]+')
 		->name('public.user.one');	
 
-	Route::match(['get', 'post'], '/add', 'UserController@add')
-		->name('public.user.add');
+	Route::get('/register', 'UserController@register')
+		->name('public.user.register');
 
-	Route::match(['get', 'post'], '/login', 'UserController@login');	
+	Route::post('/register', 'UserController@registerPost')
+		->name('public.user.registerPost');	
+
+	Route::get('/login', 'UserController@login')
+		->name('public.user.login');	
+	
+	Route::post('/login', 'UserController@loginPost')
+		->name('public.user.loginPost');	
 
 	Route::get('/logout', 'UserController@logout');	
 

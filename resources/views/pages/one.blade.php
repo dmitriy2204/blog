@@ -1,7 +1,4 @@
-@extends('layouts.one-column')
+@include('parts.one-post')
 
-@section('center-column')
-    @include('parts.one-post')
-@endsection
  
 

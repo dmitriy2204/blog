@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
 @yield('header')
 
 @yield('content')

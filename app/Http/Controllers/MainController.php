@@ -3,27 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
 	public function mainPage()
 	{
-		return view('pages.main', [
+		return view('layouts.primary', [
+			'page' => 'pages.main',
 			'title' => 'Главная страница'
 		]);
 	}
 
 	public function aboutPage()
 	{
-		return view('pages.about', [
+		return view('layouts.primary', [
+			'page' => 'pages.about',
 			'title' => 'Обо мне'
 		]);
 	}
 
+	public function testPage()
+    {
+    	$user = DB::table('users')
+    	->pluck('name');
+    	
+
+    	dump($user);
+
+        return view('layouts.primary', [
+            'page' => 'pages.test',
+            'title' => 'Тест'
+        ]);
+    }
+
 	public function feedbackPage()
 	{
-		return view('pages.feedback', [
-			'title' => 'Обратная связь'
+		return view('layouts.primary', [
+			'page' => 'pages.feedback',
+			'title' => 'Обратная связь',
 		]);
 	}
 

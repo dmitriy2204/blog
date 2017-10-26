@@ -5,9 +5,8 @@
 @endsection
 
 @section('content')
-	<div class="container">
-		@section('center-column')
-		@show
+	<div class="content push-down-10">
+		@yield('center-column')
 	</div>
 @endsection
 
