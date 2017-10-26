@@ -44,7 +44,10 @@ HTML;
 
 	public function some()
 	{
-		echo date("l jS");
+		//echo date("l jS");
+		//$email = DB::table('users')->where('name', 'dima')->value('email');
+
+		echo $email;
 	}
 	
 }

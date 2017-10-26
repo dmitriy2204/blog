@@ -1,12 +1,3 @@
-@extends('layouts.two-column')
+@include('parts.about-content')
 
-@section('left-column')
-    @include('parts.about-content')
-@endsection
-
-@section('right-column')
-    @include('widgets.me')
-    @include('parts.sidebar')
-@endsection 
- 
 

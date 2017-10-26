@@ -9,7 +9,8 @@ class PostController extends Controller
 {
 	public function one($id)
 	{
-		return view('pages.one', [
+		return view('layouts.secondary', [
+			'page' => 'pages.one',
 			'title' => 'Просмотр статьи'
 		]);
 	}

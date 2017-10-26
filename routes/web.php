@@ -19,13 +19,17 @@ Route::get('/500', 'MainController@internalError')->name('internalError');
 
 Route::get('/about', 'MainController@aboutPage')->name('aboutPage');
 
-Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage');
+Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage')->middleware('auth.basic');
 
-Route::get('/test', 'TestController@some');
+Route::get('/test', 'MainController@testPage');
 
-Route::post('/test', 'TestController@some');
+//Route::post('/test', 'TestController@some');
 
 Route::get('test/redirect', 'TestController@redirectPage');
 
 Route::get('test/some', 'TestController@some');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
