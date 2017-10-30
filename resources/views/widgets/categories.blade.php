@@ -9,13 +9,13 @@
                             <a href="#">Разработка &nbsp; <span class="widget-categories__text">(0)</span> </a>
                         </li>
                         <li>
-                            <a href="#">PHP &nbsp; <span class="widget-categories__text">(0)</span> </a>
+                            <a href="#">Спорт &nbsp; <span class="widget-categories__text">(0)</span> </a>
                         </li>
                         <li>
                             <a href="#">Про жизнь &nbsp; <span class="widget-categories__text">(0)</span> </a>
                         </li>
                         <li>
-                            <a href="#">Путешествия &amp; Квесты &nbsp; <span class="widget-categories__text">(0)</span> </a>
+                            <a href="#">Путешествия &nbsp; <span class="widget-categories__text">(0)</span> </a>
                         </li>
                     </ul>
             </div>

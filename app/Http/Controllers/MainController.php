@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -39,6 +40,11 @@ class MainController extends Controller
 
 	public function feedbackPage()
 	{
+		if(!Auth::check()){
+			return redirect()
+            ->route('public.user.login');
+		}
+
 		return view('layouts.primary', [
 			'page' => 'pages.feedback',
 			'title' => 'Обратная связь',
