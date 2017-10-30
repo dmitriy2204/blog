@@ -1,6 +1,6 @@
 <div class="boxed  push-down-45">
     <div class="one-post">
-        <img class="wp-post-image col-xs-offset-1" src="/upload/blog-image.jpg" alt="Blog image" width="748" height="324">
+        <img class="wp-post-image col-xs-offset-1" src="/upload/waterfall.jpg" alt="Blog image">
     </div>
     <div class="row">
         <div class="col-xs-10  col-xs-offset-1">
@@ -13,7 +13,6 @@
             </div>
             <a href="post.html">
                 <div class="read-more">
-                    Читать далее <span class="glyphicon glyphicon-chevron-right"></span>
                     <div class="comment-icon-counter">
                         <span class="glyphicon glyphicon-comment comment-icon"></span>
                         <span class="comment-counter">0</span>

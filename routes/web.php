@@ -19,7 +19,7 @@ Route::get('/500', 'MainController@internalError')->name('internalError');
 
 Route::get('/about', 'MainController@aboutPage')->name('aboutPage');
 
-Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage')->middleware('auth.basic');
+Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage');
 
 Route::get('/test', 'MainController@testPage');
 

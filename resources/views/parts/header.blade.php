@@ -1,8 +1,8 @@
 <header class="header boxed push-down-45">
 	<div class="container">
-		<div class="logo col-xs-9 col-md-3"><a href="/"><img src="/upload/logo.png" alt=""></a></div>
+		<div class="logo col-md-3"><a href="/"><img src="/upload/welcome_to_my_blog.png" alt=""></a></div>
 	
-		<nav class="navbar col-xs-12 col-md-8">
+		<nav class="header-menu col-md-9">
 			<ul class="navigation">
 				<li class="header-navbar">
 					<a href="/">Главная</a>
@@ -33,9 +33,9 @@
 </header>
 <div class="greeting boxed">
 	@if (Auth::check())
-		Привет, {{ Auth::user()->name }}!
+		<h5>Привет, {{ Auth::user()->name }}!</h5>
 	@else 
-		Привет, {{ $userName }}!
+		<h5>Привет, {{ $userName }}!</h5>
 	@endif	
 </div>
 </div>

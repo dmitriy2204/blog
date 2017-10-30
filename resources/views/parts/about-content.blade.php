@@ -1,5 +1,5 @@
 <div class="about">
-	<img src="upload/about-1.jpg" alt="">
-	<p>Lorem Ipsum Dolor</p>
-	<p>Web разработчик, PHP разработчик, блоггер</p>
+	<img src="upload/me.jpg" alt="">
+	<p>Дмитрий</p>
+	<p>Web разработчик, путешественник, марафонец</p>
 </div>

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Client;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\RegisterFormRequest;
 
 
@@ -46,6 +49,8 @@ class UserController extends Controller
 
 	public function login()
 	{
+		Session::put('url.intended', URL::previous());
+
 		return view('layouts.secondary', [
 			'page' => 'pages.auth',
 			'title' => 'Авторизация'
@@ -61,21 +66,20 @@ class UserController extends Controller
 			'password' => $request->input('password')
 		], $remember);
 
-		if ($authResult) {
+		if (!$authResult) {
 			return redirect()
-				->route('mainPage');
-		} else {
-			return redirect()
-				->route('public.user.login')
-				->with('authError', 'Неправильный логин или пароль');
+				->back()
+				->with('authError', 'Неправильный логин или пароль!');
 		}
+
+		//return Redirect::to(Session::get('url.intended')); //Не работает, если пользователь сделает ошибку при вводе данных
+		return Redirect::intended();//редиректит на главную страницу, а не теда, куда шел пользователь
 	}
 
 	public function logout()
 	{
 		Auth::logout();
 
-		return redirect()
-            ->route('mainPage');
+		return back();
 	}
 }
