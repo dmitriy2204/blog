@@ -6,7 +6,7 @@
 	            	<h2>Авторизация</h2>
 	           	 	<p>Для продолжения необходимо ввести логин и пароль</p>
 	           	</div> 	
-	            <form class="" method="POST" action="">
+	            <form method="POST" action="">
 	                {{ csrf_field() }}
 
 	                @if (session('authError'))

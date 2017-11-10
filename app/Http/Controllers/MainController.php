@@ -26,13 +26,11 @@ class MainController extends Controller
 
 	public function testPage()
     {
-    	$user = DB::table('users')
-    	->pluck('name');
-    	
+    	$users = DB::table('users')->distinct()->get();
 
-    	dump($user);
+    	dump($users);
 
-        return view('layouts.primary', [
+    	return view('layouts.primary', [
             'page' => 'pages.test',
             'title' => 'Тест'
         ]);

@@ -1,5 +1,5 @@
 <header class="header boxed push-down-45">
-	<div class="container">
+	<div class="wrapper">
 		<div class="logo col-md-3"><a href="/"><img src="/upload/welcome_to_my_blog.png" alt=""></a></div>
 	
 		<nav class="header-menu col-md-9">
@@ -32,10 +32,14 @@
 	</div>
 </header>
 <div class="greeting boxed">
-	@if (Auth::check())
-		<h5>Привет, {{ Auth::user()->name }}!</h5>
-	@else 
-		<h5>Привет, {{ $userName }}!</h5>
-	@endif	
+	<div class="wrapper">
+		@if (session('message'))
+			<h5>{{ session('message') }}</h5>
+		@elseif (Auth::check())
+			<h5>Привет, {{ Auth::user()->name }}!</h5>
+		@else 
+			<h5>Привет, {{ $userName }}!</h5>
+		@endif
+	</div>	
 </div>
 </div>

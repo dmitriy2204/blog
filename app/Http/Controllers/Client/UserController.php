@@ -44,7 +44,8 @@ class UserController extends Controller
         ]);
 
         return redirect()
-            ->route('mainPage');
+            ->route('mainPage')
+            ->with('message', 'Вы успешно зарегистрированы!');
 	}
 
 	public function login()
