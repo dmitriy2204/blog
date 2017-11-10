@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-	<div class="content">		
+	<main class="content">
+		<div class="wpapper">	
 			<div class="row">
 				<div class="col-xs-12 col-md-8">
 					@yield('left-column')
@@ -14,7 +15,8 @@
 					@yield('right-column')
 				</div>				
 			</div>	
-	</div>
+		</div>		
+	</main>
 @endsection
 
 @section('footer')

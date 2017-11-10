@@ -1,3 +1,5 @@
 <footer class="copyrights">
-	Blog PHP © Dmitriy 2017.
+	<div class="wpapper">
+		Blog PHP © Dmitriy 2017.
+	</div>
 </footer>

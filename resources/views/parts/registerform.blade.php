@@ -22,7 +22,7 @@
 			            <div class="form-group">
 			                <label for="input_name" class="col-sm-3">Имя/Никнейм</label>
 			                <div class="col-sm-9">
-			                    <input type="text" class="form-control" name="name" placeholder="Ваш никнейм">
+			                    <input type="text" class="form-control" name="name" value = "{{ old('name') }}" placeholder="Ваш никнейм">
 			                    @if ($errors->has('name'))
 		            				<p class="form_error">
 		            					{{ $errors->first('name') }}
@@ -39,7 +39,7 @@
 			            <div class="form-group">
 			                <label for="input_email" class="col-sm-3">E-mail</label>
 			                <div class="col-sm-9">
-			                    <input type="text" class="form-control" id="input_email" name="email" placeholder="user@domain.ru">
+			                    <input type="text" class="form-control" id="input_email" name="email" value = "{{ old('email') }}" placeholder="user@domain.ru">
 			                    @if ($errors->has('email'))
 		            				<p class="form_error">
 		            					{{ $errors->first('email') }}
@@ -71,7 +71,7 @@
 						 @endif; 
 					>
 			             <div class="form-group">
-			               <label for="input_pass_2" class="col-sm-3 control-label">Подтвердите пароль</label>
+			              	<label for="input_pass_2" class="col-sm-3 control-label">Подтвердите пароль</label>
 			                <div class="col-sm-9">
 			                    <input type="password" class="form-control" id="input_pass_2" name="password_confirm" placeholder="Подтверждение пароля">
 			                    @if ($errors->has('password_confirm'))
@@ -90,7 +90,7 @@
 			            <div class="form-group">
 			                <label for="input_phone" class="col-sm-3 control-label">Номер телефона</label>
 			                <div class="col-sm-9">
-			                    <input type="text" class="form-control" id="input_phone" name="phone" placeholder="8 (987) 654-32-10">
+			                    <input type="text" class="form-control" id="input_phone" name="phone" value = "{{ old('phone') }}" placeholder="8 (987) 654-32-10">
 			                    @if ($errors->has('phone'))
 		            				<p class="form_error">
 		            					{{ $errors->first('phone') }}
@@ -105,7 +105,8 @@
 	                <div class="col-sm-offset-3 col-sm-5">
 	                    <div class="checkbox">
 	                        <label>
-	                            <input type="checkbox" name="is_confirmed">Согласен с условиями сайта</label>
+	                            <input type="checkbox" name="is_confirmed">Согласен с условиями сайта
+	                        </label>
 	                    </div>
 	                </div>
 	            </div>
