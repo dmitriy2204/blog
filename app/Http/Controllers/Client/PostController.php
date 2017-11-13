@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,7 +27,7 @@ class PostController extends Controller
 	{
 		$tags = Tag::withCount('posts')->get();
 		$tag = Tag::where('id', $id)->first();
-		$posts = $tag->posts;
+		$posts = $tag->posts()->withCount('comments')->get();
 		$title = $tag->name;
 		
 		return view('layouts.primary', [
