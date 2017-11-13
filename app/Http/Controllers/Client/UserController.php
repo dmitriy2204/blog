@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Models\Post;
+use App\Models\Profile;
+use App\Models\Tag;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -31,12 +35,9 @@ class UserController extends Controller
 
 	public function registerPost(RegisterFormRequest $request)
 	{
-
 		DB::table('users')->insert([
-            'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'phone' => $request->input('phone'),
             'created_at' => Carbon::createFromTimestamp(time())
                 ->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::createFromTimestamp(time())

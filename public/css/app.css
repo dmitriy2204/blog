@@ -162,7 +162,7 @@ form.registerform ul li.error input {
 
 .form_error {
 	position: absolute;
-	bottom: -9px;
+	bottom: -20px;
 	z-index: 10;
 	border: 1px solid #fb431c;
 	padding: 2px 5px;
