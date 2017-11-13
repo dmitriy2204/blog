@@ -28,7 +28,7 @@ class RegisterFormRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'password' => 'required|max:255|min:6',
             'password_confirm' => 'required|same:password',
-            'phone' => 'nullable|regex:/\+\d{1}\s{1}\(\d{3}\)\s{1}\d{3}\-\d{2}\-\d{2}/',
+            'phone' => 'nullable|regex:/\+\d{1}\(\d{3}\)\d{7}/',
             'is_confirmed' => 'accepted'
         ];
     }    

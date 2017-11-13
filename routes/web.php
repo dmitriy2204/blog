@@ -20,6 +20,7 @@ Route::get('/500', 'MainController@internalError')->name('internalError');
 Route::get('/about', 'MainController@aboutPage')->name('aboutPage');
 
 Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage');
+Route::get('/relations', 'MainController@relations')->name('relations');
 
 Route::get('/test', 'MainController@testPage');
 
@@ -33,3 +34,4 @@ Route::get('test/some', 'TestController@some');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

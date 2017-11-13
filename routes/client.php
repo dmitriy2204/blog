@@ -15,6 +15,10 @@ Route::group(['prefix' => '/post'], function (){
 	Route::get('/delete/{id}', 'PostController@delete')
 		->where('id', '[0-9]+')
 		->name('public.post.delete');
+
+	Route::get('/category/{id}', 'PostController@postsByTag')
+		->where('id', '[0-9]+')
+		->name('public.post.category');	
 });
 
 Route::group(['prefix' => '/user'], function (){
