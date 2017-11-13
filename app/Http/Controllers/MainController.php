@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class MainController extends Controller
 	public function mainPage()
 	{
 		$tags = Tag::withCount('posts')->get();
-		$posts = Post::where('is_active', 1)->withCount('tags')->get();
+		$posts = Post::where('is_active', 1)->withCount('tags')->withCount('comments')->get();
 
 		return view('layouts.primary', [
 			'page' => 'pages.main',
@@ -143,8 +144,6 @@ class MainController extends Controller
 			->detach(Tag::where('name', 'Про жизнь')->first()->id);
 		*/
 /*
-		В базе есть таблицы posts и tags, перекрестная таблица post_tag со столбцами post_id и tag_id. 
-		Нужно сделать миграцию, добавить уникальный составной индекс, чтобы пара post_id-tag_id не повторялась.
 
 		Schema::table('post_tag', function (Blueprint $table) {
     		$table->unique('post_id', 'tag_id');

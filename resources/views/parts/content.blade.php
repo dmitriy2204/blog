@@ -39,13 +39,23 @@
                 <a href="{{ route('public.post.one', ['id' => $post->id]) }}">
                     Читать далее
                 </a>
-                <div class="comment_counter">
+                <div class="comment_counter">                 
                     <a href="#">
+                        Комментарии:
                         <span class="glyphicon glyphicon-comment comment-icon"></span>
-                        <span class="comment_counter">0</span>
+                        <span>{{ $post->comments_count }}</span>
                     </a>
                 </div>
-                {{ $post->tags_count }}
+                <div class="comments">
+                    
+                    @forelse ($post->comments as $comment)
+                        @include('parts.comment')
+                    @empty
+                        <p>Для этой статьи пока нет ни одного комментария. Будьте первым!</p>
+                    @endforelse
+                </div>
+                
+                
             </div>
         </div>
     </div>
