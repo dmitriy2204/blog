@@ -22,13 +22,13 @@ class CreateProfilesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('name', 20);
-            $table->date('birthdate');
+            $table->date('birthdate')->nullable(); 
             $table->string('phone', 15)->nullable();            
             $table->timestamps();
             $table->softDeletes();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

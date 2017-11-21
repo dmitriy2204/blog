@@ -47,15 +47,16 @@
                     </a>
                 </div>
                 <div class="comments">
-                    
                     @forelse ($post->comments as $comment)
                         @include('parts.comment')
                     @empty
                         <p>Для этой статьи пока нет ни одного комментария. Будьте первым!</p>
                     @endforelse
                 </div>
-                
-                
+            </div>
+            <div class="admin_panel">
+                <p><a href="{{ route('public.post.edit', ['id' => $post->id]) }}">Редактировать статью</a></p>
+                <p><a href="{{ route('public.post.delete', ['id' => $post->id]) }}">Удалить статью</a></p>
             </div>
         </div>
     </div>

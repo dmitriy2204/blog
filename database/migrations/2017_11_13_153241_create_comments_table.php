@@ -21,14 +21,12 @@ class CreateCommentsTable extends Migration
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');  
-
             $table->text('text');
             $table->boolean('is_active')->default(1);  
             $table->timestamps();

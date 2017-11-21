@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Section;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -35,14 +36,26 @@ class UserController extends Controller
 
 	public function registerPost(RegisterFormRequest $request)
 	{
-		DB::table('users')->insert([
+		$create = User::create([
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'created_at' => Carbon::createFromTimestamp(time())
                 ->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::createFromTimestamp(time())
-                ->format('Y-m-d H:i:s'),
+                ->format('Y-m-d H:i:s')
         ]);
+			
+        if ($create) {
+        	Profile::create([
+	        	'user_id' => $create->id,
+	        	'name' => $request->input('name'),
+	            'phone' => $request->input('phone'),
+	            'created_at' => Carbon::createFromTimestamp(time())
+	                ->format('Y-m-d H:i:s'),
+	            'updated_at' => Carbon::createFromTimestamp(time())
+	                ->format('Y-m-d H:i:s')
+        	]);
+        };	
 
         return redirect()
             ->route('mainPage')
@@ -75,7 +88,7 @@ class UserController extends Controller
 		}
 
 		//return Redirect::to(Session::get('url.intended')); //Не работает, если пользователь сделает ошибку при вводе данных
-		return Redirect::intended();//редиректит на главную страницу, а не теда, куда шел пользователь
+		return Redirect::intended();//редиректит на главную страницу, а не туда, куда шел пользователь
 	}
 
 	public function logout()

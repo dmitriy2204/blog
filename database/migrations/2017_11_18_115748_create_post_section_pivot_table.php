@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTagPivotTable extends Migration
+class CreatePostSectionPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePostTagPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_tag', function (Blueprint $table) {
+        Schema::create('post_section', function (Blueprint $table) {
             $table->integer('post_id')
                 ->unsigned()
                 ->nullable();
@@ -23,17 +23,17 @@ class CreatePostTagPivotTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             
-            $table->integer('tag_id')
+            $table->integer('section_id')
                 ->unsigned()
                 ->nullable();
-            $table->foreign('tag_id')    
+            $table->foreign('section_id')    
                 ->references('id')
-                ->on('tags')
+                ->on('sections')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -41,6 +41,6 @@ class CreatePostTagPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('post_section');
     }
 }

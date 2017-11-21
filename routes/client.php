@@ -3,20 +3,35 @@
 Route::group(['prefix' => '/post'], function (){
 	Route::get('/{id}', 'PostController@one')
 		->where('id', '[0-9]+')
-		->name('public.post.one');	
+		->name('public.post.one');
 
-	Route::post('/add', 'PostController@add')
-		->name('public.post.add');
-
-	Route::match(['get', 'post'], '/edit/{id}', 'PostController@edit')
+	Route::post('/{id}', 'PostController@addComment')
 		->where('id', '[0-9]+')
-		->name('public.post.edit');
+		->name('public.post.addComment');		
+
+	Route::get('/add', 'PostController@add')
+		->name('public.post.add')
+		->middleware('auth');		
+
+	Route::post('/add', 'PostController@addPost')
+		->name('public.post.addPost')
+		->middleware('auth');
+
+	Route::get('/edit/{id}', 'PostController@edit')
+		->where('id', '[0-9]+')
+		->name('public.post.edit');	
+		
+	Route::post('/edit/{id}', 'PostController@editPost')
+		->where('id', '[0-9]+')
+		->name('public.post.editPost');
+
+
 
 	Route::get('/delete/{id}', 'PostController@delete')
 		->where('id', '[0-9]+')
 		->name('public.post.delete');
 
-	Route::get('/category/{id}', 'PostController@postsByTag')
+	Route::get('/category/{id}', 'PostController@postsBySection')
 		->where('id', '[0-9]+')
 		->name('public.post.category');	
 });
