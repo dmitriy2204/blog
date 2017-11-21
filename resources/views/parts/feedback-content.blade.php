@@ -4,15 +4,14 @@
 	<form action="#" method="POST">
         <div class="row">
             <div class="col-xs-6">
-                <input type="text" placeholder="Your Name *">
+                <input type="text" placeholder="Ваше имя">
             </div>
             <div class="col-xs-6">
-                <input type="text" placeholder="E-mail Address *">
+                <input type="text" placeholder="Ваш E-mail">
             </div>
             <div class="col-xs-12">
-                <textarea rows="6" type="text" placeholder="Your Message *"></textarea>
-                <a href="#" class="btn  btn-primary">Отправить сообщение</a> 
-                <span>Поля со знаком * обязательны для заполнения!</span>
+                <textarea rows="3" type="text" placeholder="Сообщение"></textarea>
+                <button type="submit" class="btn btn-primary">Отправить сообщение</button>
             </div>
         </div>
     </form>

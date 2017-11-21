@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUniqueToPostTagPivotTable extends Migration
+class CreateSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class AddUniqueToPostTagPivotTable extends Migration
      */
     public function up()
     {
-        Schema::table('post_tag', function (Blueprint $table) {
-            $table->unique(['post_id', 'tag_id']);
+        Schema::create('sections', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 255);
+            $table->timestamps();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -25,8 +27,6 @@ class AddUniqueToPostTagPivotTable extends Migration
      */
     public function down()
     {
-        Schema::table('post_tag', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('sections');
     }
 }

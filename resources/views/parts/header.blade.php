@@ -8,18 +8,19 @@
 					<a href="/">Главная</a>
 				</li>
 				<li class="header-navbar">
-					<a href="/test">Тест</a>
-				</li>
-				<li class="header-navbar">
 					<a href="/about">Обо мне</a>
 				</li>
 				<li class="header-navbar">
 					<a href="/feedback">Обратная связь</a>
 				</li>
+				@can('create', App\Models\Post::class)
+					<li class="header-navbar">
+						<a href="/post/add">Новый пост</a>
+					</li>
+				@endcan	
 				<li class="header-navbar">
 					<a href="/user/register">Регистрация</a>
 				</li>
-				
 				<li class="header-navbar">
 					@if (Auth::check())
 						<a href="/user/logout">Выход</a>
@@ -35,10 +36,10 @@
 	<div class="wrapper">
 		@if (session('message'))
 			<h5>{{ session('message') }}</h5>
-		@elseif (Auth::check())
-			<h5>Привет, {{ Auth::user()->name }}!</h5>
-		@else 
-			<h5>Привет, {{ $userName }}!</h5>
+		@elseif (isset($activeUser->profile->name)) 
+			<h5>Добро пожаловать, {{ $activeUser->profile->name }}!</h5>
+		@else
+			 <h5>Добро пожаловать!</h5>	
 		@endif
 	</div>	
 </div>

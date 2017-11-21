@@ -15,6 +15,23 @@
 				@endif
 				<ul>
 					<li 
+						 @if($errors->has('name')) : 
+							class = "error"
+						 @endif; 
+					>
+			            <div class="form-group">
+			                <label for="input_name" class="col-sm-3">Имя/Никнейм</label>
+			                <div class="col-sm-9">
+			                    <input type="text" class="form-control" name="name" value = "{{ old('name') }}" placeholder="Ваш никнейм">
+			                    @if ($errors->has('name'))
+		            				<p class="form_error">
+		            					{{ $errors->first('name') }}
+		            				</p>
+								@endif
+			                </div>
+			            </div>
+					</li>
+					<li 
 						@if($errors->has('email')) : 
 							class = "error"
 						 @endif; 
@@ -64,7 +81,24 @@
 								@endif
 			                </div>
 			            </div>
-					</li>   
+					</li>
+					<li 
+						@if($errors->has('phone')) : 
+							class = "error"
+						 @endif; 
+					>
+			            <div class="form-group">
+			                <label for="input_phone" class="col-sm-3 control-label">Номер телефона</label>
+			                <div class="col-sm-9">
+			                    <input type="text" class="form-control" id="input_phone" name="phone" value = "{{ old('phone') }}" placeholder="+7(987)6543210">
+			                    @if ($errors->has('phone'))
+		            				<p class="form_error">
+		            					{{ $errors->first('phone') }}
+		            				</p>
+								@endif
+			                </div>
+			            </div>
+</li>    
 	            </ul>
 
 	            <div class="form-group">
