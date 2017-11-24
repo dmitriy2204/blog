@@ -13,7 +13,10 @@ class PostSectionTableSeeder extends Seeder
      */
     public function run()
     {
-        Post::find(1)->sections()->attach(3);
-        Post::find(2)->sections()->attach([1,4]);
+        Post::find(1)->sections()->attach([1,2,4]);
+        Post::find(2)->sections()->attach(3);
+        Post::find(3)->sections()->attach(4);
+        Post::find(4)->sections()->attach(3);
+        Post::find(5)->sections()->attach(4);
     }
 }

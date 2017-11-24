@@ -19,14 +19,8 @@ Route::get('/500', 'MainController@internalError')->name('internalError');
 
 Route::get('/about', 'MainController@aboutPage')->name('aboutPage');
 
-Route::get('/feedback', 'MainController@feedbackPage')->name('feedbackPage');
-
-Route::get('/test', 'MainController@testPage');
-
-Route::get('test/redirect', 'TestController@redirectPage');
-
-Route::get('test/some', 'TestController@some');
-
+Route::get('/feedback', 'MainController@feedback')->name('feedbackPage');
+Route::post('/feedback', 'MainController@feedbackPost')->name('feedbackPost');
 
 Auth::routes();
 

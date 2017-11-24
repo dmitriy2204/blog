@@ -31,6 +31,8 @@ class CreatePostSectionPivotTable extends Migration
                 ->on('sections')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->unique(['post_id', 'section_id']);
         });
     }
 
