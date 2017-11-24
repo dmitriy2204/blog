@@ -14,14 +14,14 @@ class CommentsTableSeeder extends Seeder
     {
         Comment::create([
             'user_id' => '1',
-            'post_id' => 2,
-            'text' => 'Первый коммент'
+            'post_id' => '5',
+            'text' => 'А я коммент'
         ]);
 
         Comment::create([
             'user_id' => '2',
-            'post_id' => 2,
-            'text' => 'Второй коммент'
+            'post_id' => '5',
+            'text' => 'И я коммент'
         ]);
     }
 }

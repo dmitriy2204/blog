@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Models\Post;
-use App\Models\Profile;
 use App\Models\Tag;
-use App\Models\User;
-use App\Models\Comment;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,19 +15,24 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\PostCreateRequest;
 use Illuminate\Support\Facades\Redirect;
 
-
 class PostController extends Controller
 {
 	public function one($id)
 	{
-		$post = Post::withCount('comments')->find($id);
-		session(['post_id' => $id]);
+		try{
+			$post = Post::withCount('comments')->findOrFail($id);
+			session(['post_id' => $id]);
 
-		return view('layouts.secondary', [
-			'page' => 'pages.one',
-			'title' => 'Просмотр статьи',
-			'post' => $post
-		]);	
+			event('postViewed', $post);
+
+			return view('layouts.secondary', [
+				'page' => 'pages.one',
+				'title' => 'Просмотр статьи',
+				'post' => $post
+			]);	
+		} catch(\Exception $e){
+			abort(404);
+		}
 	}
 
 	public function postsBySection($id)
@@ -41,6 +43,17 @@ class PostController extends Controller
 			'page' => 'pages.main',
 			'title' => $section->name,
 			'postsBySection' => $section->posts()->withCount('comments')->get()
+		]);	
+	}
+
+	public function postsByTag($id)
+	{
+		$tag = Tag::find($id);
+		
+		return view('layouts.primary', [
+			'page' => 'pages.main',
+			'title' => $tag->name,
+			'postsByTag' => $tag->posts()->withCount('comments')->get()
 		]);	
 	}
 
@@ -70,7 +83,7 @@ class PostController extends Controller
                 ->format('Y-m-d H:i:s')
     	]);   
 
-    	$post->sections()->attach([$request->input('section')]);     
+    	$post->sections()->attach([$request->input('section')]);      
 
         return redirect()->route('mainPage')
         	->with('message', 'Статья успешно добавлена!');
@@ -88,11 +101,6 @@ class PostController extends Controller
             'text' => $request->input('text'),
             'user_id' => Auth::user()->id,
             'post_id' => $post->id
-            /*
-            'user_id' => $request->input('user_id'),
-            'post_id' => $request->input('post_id')
-            Не срабатывает
-            */
         ]);
         
         return redirect()
@@ -101,7 +109,7 @@ class PostController extends Controller
 
 	public function edit($id)
 	{
-		$this->authorize('create', Post::class);
+		$this->authorize('edit', Post::class);
 		$post = Post::find($id);
 
 		return view('layouts.primary', [
@@ -114,15 +122,18 @@ class PostController extends Controller
 	public function editPost($id, Request $request)
 	{
 		$this->authorize('edit', Post::class);
-		$post = Post::find($id)
-			->update([
-				'title' => $request->input('title'),
-	            'tagline' => $request->input('tagline'),
-	            'announce' => $request->input('announce'),
-	            'fulltext' => $request->input('fulltext')
-    		]);   
+		$post = Post::find($id);
+		$post->update([
+			'title' => $request->input('title'),
+            'tagline' => $request->input('tagline'),
+            'announce' => $request->input('announce'),
+            'fulltext' => $request->input('fulltext')
+    	]);   
 
-    	//$post->sections()->attach([$request->input('section')]);//Выдает ошибку
+		try {
+			$post->sections()->attach([$request->input('section')]);
+		} catch (\Exception $e) {}
+    	
 
         return redirect()->route('mainPage')
         	->with('message', 'Статья успешно изменена!');

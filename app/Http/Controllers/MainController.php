@@ -11,6 +11,10 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
+use App\Mail\FeedbackMail;
+use App\Events\FeedbackWasCreated;
 
 class MainController extends Controller
 {
@@ -30,19 +34,7 @@ class MainController extends Controller
 		]);
 	}
 
-	public function testPage()
-    {
-    	$users = DB::table('users')->distinct()->get();
-
-    	dump($users);
-
-    	return view('layouts.primary', [
-            'page' => 'pages.test',
-            'title' => 'Тест'
-        ]);
-    }
-
-	public function feedbackPage()
+	public function feedback()
 	{
 		if (!Auth::check()) {
 			return redirect()
@@ -55,25 +47,26 @@ class MainController extends Controller
 		]);
 	}
 
-	public function pageNotFound()
+	public function feedbackPost(Request $request)
 	{
-		return view('errors.404', [
-			'title' => '404 Страница не найдена'
+		$this->validate($request, [
+			'name' => 'required|min:2|max:50',
+			'email' => 'required|max:50|email',
+			'message' => 'required|max:10240|min:10'
 		]);
-	}
 
-	public function accessDenied()
-	{
-		return view('errors.403', [
-			'title' => '403 Доступ запрещен'
-		]);
-	}
+		event(
+			new FeedbackWasCreated($request->all())
+		);
 
-	public function internalError()
-	{
-		return view('errors.500', [
-			'title' => '500 Сервис временно недоступен'
-		]);
+		Mail::to(env('MAIL_TO'))
+			->send(
+				new FeedbackMail($request->all()
+				)
+			);
+
+		return redirect()->route('mainPage')
+        	->with('message', 'Спасибо за ваше сообщение!');
 	}
 
 }

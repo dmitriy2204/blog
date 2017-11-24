@@ -1,17 +1,18 @@
 <div class="feedback">
 	<h3>Обратная связь</h3>
-	<p>Чтобы отправить нам сообщение, заполните форму!</p>
-	<form action="#" method="POST">
+	<p>Отправьте сообщение, и я отвечу вам.</p>
+	<form action="{{ route('feedbackPost') }}" method="POST">
+        {{ csrf_field() }}
         <div class="row">
             <div class="col-xs-6">
-                <input type="text" placeholder="Ваше имя">
+                <input type="text" name="name" placeholder="Ваше имя">
             </div>
             <div class="col-xs-6">
-                <input type="text" placeholder="Ваш E-mail">
+                <input type="text" name="email" placeholder="Ваш E-mail">
             </div>
             <div class="col-xs-12">
-                <textarea rows="3" type="text" placeholder="Сообщение"></textarea>
-                <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+                <textarea rows="3" type="text" name="message" placeholder="Сообщение"></textarea>
+                <button type="submit" class="btn btn-primary">Отправить сообщение <i class="fa fa-send-o"></i></button>
             </div>
         </div>
     </form>

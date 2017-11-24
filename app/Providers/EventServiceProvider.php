@@ -13,8 +13,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'App\Events\FeedbackWasCreated' => [
+            'App\Listeners\FeedbackDbSave'
+        ],
+
+        'App\Events\PostWasShown' => [
+            'App\Listeners\PostViewIncrement'
         ],
     ];
 
@@ -27,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
+        Event::listen('postViewed', function ($post) {
+            $post->increment('views_count');
+        });
         //
     }
 }

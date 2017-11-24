@@ -108,11 +108,18 @@ hr {
 
 .about {
 	text-align: center;
+	font-weight: 700;
 }
 
 .about img {
-	width: 20%;
+	width: 80%;
 	height: auto;
+	margin-bottom: 20px;
+}
+
+#phone, #social {
+	margin: 10px;
+	color: #51ab6d;
 }
 
 .feedback input, textarea {
@@ -129,8 +136,23 @@ hr {
 	width: 100%;
 }
 
+.article_content h4 {
+	color: #8b989f;
+}
+
 .one-post img {
 	max-width: 80%;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.views_count {
+	color: #8b989f;
+}
+
+.widget_title h6 {
+	display: inline-block;
+	font-weight: 700;	
 }
 
 /* Comments */
@@ -202,6 +224,16 @@ ul li:hover p.form_error {
 
 .error_input {
 	background-color: #fb431c;
+}
+
+/* Post */
+
+.add_post input, textarea {
+	margin: 10px 0px;
+}
+
+.add_post ul li {
+	list-style: none;	
 }
 
 /* Sidebar */
@@ -286,6 +318,21 @@ ul li:hover p.form_error {
 	width: 100%;
 }
 
+.tags a {
+	display: inline-block;
+	font-weight: 800;
+	color: #51ab6d;
+	text-decoration: none;
+	border: 2px solid #51ab6d;
+	border-radius: 30px;
+	padding: 7px 10px;
+	margin: 5px;
+}
+
+.tags a:hover {
+	background-color: #51ab6d;
+	color: #fff;
+}
 
 
 
@@ -313,4 +360,12 @@ ul li:hover p.form_error {
 .copyrights {
 	text-align: center;
 	color: #8b989f;
+}
+
+.social a {
+	padding: 20px;
+}
+
+.contacts i {
+	color: #77d294;
 }

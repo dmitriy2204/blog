@@ -98,7 +98,7 @@
 								@endif
 			                </div>
 			            </div>
-</li>    
+					</li>    
 	            </ul>
 
 	            <div class="form-group">

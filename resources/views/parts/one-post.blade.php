@@ -5,6 +5,20 @@
         </div>
     @endif
     <div class="row">
+        <div class="col-xs-12  col-sm-10  col-sm-offset-1">
+            <div class="row">
+                <div class="views_count col-xs-12  col-sm-8">
+                    <i class="fa fa-eye"> {{ $post->views_count }}</i>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <span class="article_date">
+                        <i class="fa fa-calendar"> {{ $post->created_at }}</i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-xs-10  col-xs-offset-1">
             <div class="post-content--front-page">
                 <h2 class="front-page-title">
@@ -45,7 +59,7 @@
                                             <input type="hidden" name="user_id" value="{{ $activeUser->id }}">
                                             <input type="hidden" name="post_id" value="{{ $post->id }}">
                                             <textarea rows="3" type="text" placeholder="Комментарий" name="text">{{ old('text') }}</textarea>
-                                            <button type="submit" class="btn btn-primary">Добавить</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-share"> Добавить</i></button>
                                         </div>
                                     </div>
                                 </form>

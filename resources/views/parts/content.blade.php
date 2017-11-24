@@ -7,12 +7,12 @@
     <div class="row">
         <div class="col-xs-12  col-sm-10  col-sm-offset-1">
             <div class="row">
-                <div class="col-xs-12  col-sm-8">
-                    <a href="/">Статьи</a>
+                <div class="views_count col-xs-12  col-sm-8">
+                    <i class="fa fa-eye"> {{ $post->views_count }}</i>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <span class="article_date">
-                        {{ $post->created_at }}
+                        <i class="fa fa-calendar"> {{ $post->created_at }}</i>
                     </span>
                 </div>
             </div>
@@ -24,12 +24,12 @@
                 <h2 class="article_title">
                     <a href="{{ route('public.post.one', ['id' => $post->id]) }}">{{ $post->title }}</a>
                 </h2>
-                @if ($post->tagline)
-                    <h3>
+                @if (isset($post->tagline))
+                    <h4>
                         {{ $post->tagline }}
-                    </h3>
+                    </h4>
                 @endif
-                @if($post->announce)    
+                @if(isset($post->announce))
                     <p>
                         {{ $post->announce }}
                     </p>
@@ -42,7 +42,7 @@
                 <div class="comment_counter">                 
                     <a href="#">
                         Комментарии:
-                        <span class="glyphicon glyphicon-comment comment-icon"></span>
+                        <i class="fa fa-comments-o"></i>
                         <span>{{ $post->comments_count }}</span>
                     </a>
                 </div>
@@ -54,10 +54,14 @@
                     @endforelse
                 </div>
             </div>
-            <div class="admin_panel">
-                <p><a href="{{ route('public.post.edit', ['id' => $post->id]) }}">Редактировать статью</a></p>
-                <p><a href="{{ route('public.post.delete', ['id' => $post->id]) }}">Удалить статью</a></p>
-            </div>
+            @can('edit', App\Models\Post::class)
+                <div class="admin_panel">
+                    <p><a href="{{ route('public.post.edit', ['id' => $post->id]) }}">Редактировать пост</a></p>
+                </div>   
+            @endcan
+            @can('delete', App\Models\Post::class)    
+                <p><a href="{{ route('public.post.delete', ['id' => $post->id]) }}">Удалить пост</a></p>
+            @endcan    
         </div>
     </div>
 </div>

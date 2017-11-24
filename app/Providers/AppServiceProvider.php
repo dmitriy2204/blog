@@ -19,7 +19,12 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {       
+    {   
+        $favouritePost = Post::where('is_favourite', '1')->first();
+        $popularPost = Post::where('is_active', 1)->orderBy('views_count', 'desc')->first();
+        View::share('favouritePost', $favouritePost);
+        View::share('popularPost', $popularPost);
+
         View::composer('*', function ($view) {
             $user = Auth::user();
 
