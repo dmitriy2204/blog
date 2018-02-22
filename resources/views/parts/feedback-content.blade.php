@@ -12,7 +12,7 @@
             </div>
             <div class="col-xs-12">
                 <textarea rows="3" type="text" name="message" placeholder="Сообщение"></textarea>
-                <button type="submit" class="btn btn-primary">Отправить сообщение <i class="fa fa-send-o"></i></button>
+                <button type="submit" class="btn btn-primary">Отправить сообщение&nbsp;<i class="fa fa-send-o"></i></button>
             </div>
         </div>
     </form>

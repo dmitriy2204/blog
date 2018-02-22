@@ -29,6 +29,10 @@ Route::group(['prefix' => '/post'], function (){
 		->where('id', '[0-9]+')
 		->name('public.post.delete');
 
+	Route::get('/deletecomment/{id}', 'PostController@deleteComment')
+		->where('id', '[0-9]+')
+		->name('public.comment.delete');	
+
 	Route::get('/category/{id}', 'PostController@postsBySection')
 		->where('id', '[0-9]+')
 		->name('public.post.category');
@@ -53,8 +57,16 @@ Route::group(['prefix' => '/user'], function (){
 		->name('public.user.login');	
 	
 	Route::post('/login', 'UserController@loginPost')
-		->name('public.user.loginPost');	
+		->name('public.user.loginPost');
 
+	Route::get('/profile/{id}', 'UserController@profile')
+		->where('id', '[0-9]+')
+		->name('public.user.profile');
+
+	Route::post('/profile/{id}', 'UserController@profilePost')
+		->where('id', '[0-9]+')
+		->name('public.user.profilePost');
+					
 	Route::get('/logout', 'UserController@logout');	
 
 });

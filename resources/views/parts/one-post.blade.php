@@ -1,18 +1,18 @@
-<div class="boxed  push-down-45">
+<div class="boxed push-down-45">
     @if ($post->image)
         <div class="one-post">
-            <img class="wp-post-image col-xs-offset-1" src="../{{ $post->image }}" alt="">
+            <img class="" src="../{{ stripos($post->image, 'upload') !== false ? $post->image : config('blog.userImagesPath').$post->image }}" alt="">
         </div>
     @endif
     <div class="row">
-        <div class="col-xs-12  col-sm-10  col-sm-offset-1">
+        <div class="col-xs-12  col-sm-9  col-sm-offset-2">
             <div class="row">
                 <div class="views_count col-xs-12  col-sm-8">
-                    <i class="fa fa-eye"> {{ $post->views_count }}</i>
+                    <i class="fa fa-eye">&nbsp;{{ $post->views_count }}</i>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <span class="article_date">
-                        <i class="fa fa-calendar"> {{ $post->created_at }}</i>
+                        <i class="fa fa-calendar">&nbsp;{{ $post->created_at }}</i>
                     </span>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                                             <input type="hidden" name="user_id" value="{{ $activeUser->id }}">
                                             <input type="hidden" name="post_id" value="{{ $post->id }}">
                                             <textarea rows="3" type="text" placeholder="Комментарий" name="text">{{ old('text') }}</textarea>
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-share"> Добавить</i></button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-share">&nbsp;Добавить</i></button>
                                         </div>
                                     </div>
                                 </form>

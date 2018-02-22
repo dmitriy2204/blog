@@ -17,9 +17,6 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\FeedbackDbSave'
         ],
 
-        'App\Events\PostWasShown' => [
-            'App\Listeners\PostViewIncrement'
-        ],
     ];
 
     /**

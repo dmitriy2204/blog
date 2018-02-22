@@ -1,7 +1,7 @@
 <div class="article boxed push-down-45">
     @if ($post->image)
         <a href="{{ route('public.post.one', ['id' => $post->id]) }}">
-            <img class="article_image" src="/{{ $post->image }}" alt="">
+            <img class="article_image" src="/{{ stripos($post->image, 'upload') !== false ? $post->image : config('blog.userImagesPath').$post->image }}" alt="">
         </a>
     @endif
     <div class="row">
@@ -39,19 +39,27 @@
                 <a href="{{ route('public.post.one', ['id' => $post->id]) }}">
                     Читать далее
                 </a>
-                <div class="comment_counter">                 
-                    <a href="#">
-                        Комментарии:
-                        <i class="fa fa-comments-o"></i>
-                        <span>{{ $post->comments_count }}</span>
-                    </a>
-                </div>
-                <div class="comments">
-                    @forelse ($post->comments as $comment)
-                        @include('parts.comment')
-                    @empty
-                        <p>Для этой статьи пока нет ни одного комментария. Будьте первым!</p>
-                    @endforelse
+                <div class="comment_counter panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" href="#commentsCollapse" class="panel-title">
+                                Комментарии:
+                                <i class="fa fa-comments-o"></i>
+                                <span>{{ $post->comments_count }}</span>
+                            </a>
+                        </div>               
+                        <div id="commentsCollapse" class="panel-collapse collapse">
+                            <ul class="list-group">
+                                @forelse ($post->comments as $comment)
+                                    <li class="list-group-item">
+                                        @include('parts.comment')
+                                        @empty
+                                        <p>Для этой статьи пока нет ни одного комментария. Будьте первым!</p>
+                                    </li>
+                                @endforelse
+                            </ul>
+                        </div>    
+                    </div> 
                 </div>
             </div>
             @can('edit', App\Models\Post::class)

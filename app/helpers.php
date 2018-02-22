@@ -1,8 +1,12 @@
 <?php
 
-function myFormatDate($time){
-    return date('d.m.Y H:i', $time);
+if(!function_exists('formatDate')) {
+    function formatDate($timestamp = null)
+    {
+    return date('d.m.Y H:i', $timestamp ?? time());
+    }
 }
+
 
 function getByKey(array $array, $key, $default = ''){
     if(isset($array[$key]) && in_array($array[$key], $array)){

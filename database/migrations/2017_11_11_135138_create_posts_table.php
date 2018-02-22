@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('image', 255)->nullable();
             $table->string('title', 100);
             //$table->string('slug', 255)->nullable();
-            $table->string('tagline', 100)->default('Разное');
+            $table->string('tagline', 100)->nullable()->default('Разное');
             $table->text('announce');
             $table->text('fulltext');
             $table->integer('views_count')->default(0);
