@@ -19,7 +19,12 @@
 					</li>
 				@endcan	
 				<li class="header-navbar">
-					<a href="/user/register">Регистрация</a>
+					@if (Auth::check())
+						<a href="{{ route('public.user.profile', ['id' => $activeUser->id]) }}">Профиль</a>	
+					@else 
+						<a href="/user/register">Регистрация</a>
+					@endif
+					
 				</li>
 				<li class="header-navbar">
 					@if (Auth::check())

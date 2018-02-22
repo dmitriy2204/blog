@@ -17,8 +17,7 @@
                 <div class="form-group">
                     <label for="input_email" class="col-sm-3 control-label">Логин</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="input_email" placeholder="Email" name="email">
-           
+                        <input type="email" class="form-control" id="input_email" placeholder="Email" name="email" value="{{ old('email') }}">
                     </div>
                 </div>
                 <div class="form-group">

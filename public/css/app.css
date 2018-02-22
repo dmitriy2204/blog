@@ -9,6 +9,10 @@ html, body {
 	height: 100%;
 }
 
+body {
+	/*background: url(../upload/bg-texture.jpg);*/
+}
+
 .wrapper {
 	max-width: 1170px;
 	overflow: hidden;
@@ -41,7 +45,7 @@ hr {
 }
 
 .content {
-	min-height: 80%;
+	min-height: 100%;
 }
 
 .content a {
@@ -56,7 +60,6 @@ hr {
 .article_date {
 	color: #8b989f;
 }
-
 
 .navigation {
 	list-style: none;
@@ -115,11 +118,8 @@ hr {
 	width: 80%;
 	height: auto;
 	margin-bottom: 20px;
-}
-
-#phone, #social {
-	margin: 10px;
-	color: #51ab6d;
+	border: solid 7px rgba(255,255,255,0.8);
+	background: linear-gradient(20deg, #f00, #00f);
 }
 
 .feedback input, textarea {
@@ -140,10 +140,15 @@ hr {
 	color: #8b989f;
 }
 
+.one-post {
+	text-align: center;
+}
+
 .one-post img {
-	max-width: 80%;
+	max-width: 90%;
 	margin-bottom: 5px;
-	margin-top: 5px;
+	margin-top: 30px;
+
 }
 
 .views_count {
@@ -172,6 +177,28 @@ hr {
 .comment {
 	margin-bottom: 20px;
 	line-height: 1;
+}
+
+/* Profile */
+
+.profile_title {
+	text-align: center;
+}
+
+.profile ul {
+	padding-left: 0;
+}
+
+form.profile ul li {
+	list-style: none;
+}
+
+form.profile label {
+	padding-left: 0;
+}
+
+form.profile ul li.error input {
+	border: 2px solid #fb431c;
 }
 
 /* Registerform */
@@ -228,16 +255,50 @@ ul li:hover p.form_error {
 
 /* Post */
 
+.post h2 {
+	text-align: center;
+}
+
 .add_post input, textarea {
 	margin: 10px 0px;
 }
 
-.add_post ul li {
-	list-style: none;	
+.edit_post input, textarea {
+	margin: 10px 0px;
 }
+
+.add_post ul li, .edit_post ul li {
+	list-style: none;
+}
+
+.add_post ul, .edit_post ul {
+	margin: 0;
+	padding: 0;	
+}
+
+.post_add_form, .edit_post_form {
+	padding-left: 0;
+}
+
+form.edit_post ul li.error input {
+	border: 2px solid #fb431c;
+}
+
+form.edit_post ul li.error textarea {
+	border: 2px solid #fb431c;
+}
+
+form.edit_post img {
+	width: 100%;
+	margin: 10px auto 20px;
+}
+
 
 /* Sidebar */
 
+.sidebar {
+	height: 100%;
+}
 
 .widget-author {
     text-align: center;
@@ -335,7 +396,6 @@ ul li:hover p.form_error {
 }
 
 
-
 /* Footer */
 
 .footer-menu {
@@ -368,4 +428,9 @@ ul li:hover p.form_error {
 
 .contacts i {
 	color: #77d294;
+}
+
+#phone, #social {
+	margin: 10px;
+	color: #51ab6d;
 }

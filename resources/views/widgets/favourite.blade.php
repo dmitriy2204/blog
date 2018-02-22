@@ -5,7 +5,7 @@
 			<h6>ИЗБРАННЫЙ ПОСТ</h6>
 		</div>
 		@if ($favouritePost->image)
-	    	<img class="widget-favourite" src="/{{ $favouritePost->image }}" alt="">
+	    	<a href="{{ route('public.post.one', ['id' => $favouritePost->id]) }}"><img class="widget-favourite" src="/{{ $favouritePost->image }}" alt=""></a>
 	    @endif
 	    <h4><a href="{{ route('public.post.one', ['id' => $favouritePost->id]) }}">{{ $favouritePost->title }}</a></h4>       	 
 	    <p>{{ $favouritePost->tagline }}</p>

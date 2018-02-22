@@ -6,7 +6,7 @@
 			<h6>ПОПУЛЯРНОЕ</h6>
 		</div>	
 		@if (isset($popularPost->image))
-	    	<img class="widget-favourite" src="/{{ $popularPost->image }}" alt="">
+	    	<a href="{{ route('public.post.one', ['id' => $popularPost->id]) }}"><img class="widget-favourite" src="/{{ $popularPost->image }}" alt=""></a>
 	    @endif
 	    <h4><a href="{{ route('public.post.one', ['id' => $popularPost->id]) }}">{{ $popularPost->title }}</a></h4>       	 
 	    <p>{{ $popularPost->tagline }}</p>

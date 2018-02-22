@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Section;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
@@ -14,15 +15,21 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\PostCreateRequest;
 use Illuminate\Support\Facades\Redirect;
+use App\Classes\Uploader;
+
 
 class PostController extends Controller
 {
+	protected $anyTagline = '4';
+
 	public function one($id)
 	{
-		try{
+		try {
 			$post = Post::withCount('comments')->findOrFail($id);
+		} catch (\Exception $e) {
+			abort(404);
+		}
 			session(['post_id' => $id]);
-
 			event('postViewed', $post);
 
 			return view('layouts.secondary', [
@@ -30,9 +37,7 @@ class PostController extends Controller
 				'title' => 'Просмотр статьи',
 				'post' => $post
 			]);	
-		} catch(\Exception $e){
-			abort(404);
-		}
+		
 	}
 
 	public function postsBySection($id)
@@ -67,11 +72,14 @@ class PostController extends Controller
     	]);		
 	}
 
-	public function addPost(PostCreateRequest $request)
+	public function addPost(PostCreateRequest $request, Uploader $uploader)
 	{
 		$this->authorize('create', Post::class);
+		$image = $uploader->imageUpload($request) ?? null;
+		$tagId = Tag::where('name', $request->input('tagline'))->first()->id ?? $this->anyTagline;
 
 		$post = Post::create([
+			'image' => $image,
 			'title' => $request->input('title'),
             'tagline' => $request->input('tagline'),
             'announce' => $request->input('announce'),
@@ -83,7 +91,8 @@ class PostController extends Controller
                 ->format('Y-m-d H:i:s')
     	]);   
 
-    	$post->sections()->attach([$request->input('section')]);      
+    	$post->sections()->attach($request->input('section'));      
+    	$post->tags()->attach($tagId);      
 
         return redirect()->route('mainPage')
         	->with('message', 'Статья успешно добавлена!');
@@ -104,7 +113,8 @@ class PostController extends Controller
         ]);
         
         return redirect()
-            ->route('public.post.one', $post->id);
+        	->back()
+        	->with('message', 'Комментарий добавлен!');
 	}
 
 	public function edit($id)
@@ -119,19 +129,26 @@ class PostController extends Controller
     	]);
     }	
 
-	public function editPost($id, Request $request)
+	public function editPost($id, PostCreateRequest $request, Uploader $uploader)
 	{
 		$this->authorize('edit', Post::class);
 		$post = Post::find($id);
+		$tagId = Tag::where('name', $request->input('tagline'))->first()->id ?? $this->anyTagline;
+
+		$image = $uploader->imageUpload($request) ?? $post->image;
+
 		$post->update([
 			'title' => $request->input('title'),
             'tagline' => $request->input('tagline'),
             'announce' => $request->input('announce'),
-            'fulltext' => $request->input('fulltext')
-    	]);   
+            'fulltext' => $request->input('fulltext'),
+            'image' => $image
+    	]);
+
+		$post->tags()->sync($tagId);
 
 		try {
-			$post->sections()->attach([$request->input('section')]);
+			$post->sections()->attach($request->input('section'));
 		} catch (\Exception $e) {}
     	
 
@@ -146,5 +163,14 @@ class PostController extends Controller
 
 		return redirect()->route('mainPage')
         	->with('message', 'Статья успешно удалена!');
+	}
+
+	public function deleteComment($id)
+	{
+		$this->authorize('delete', Post::class);
+		Comment::find($id)->delete();
+
+		return redirect()->back()
+        	->with('message', 'Комментарий успешно удален!');
 	}
 }

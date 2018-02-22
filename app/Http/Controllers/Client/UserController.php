@@ -13,10 +13,12 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\RegisterFormRequest;
+use App\Http\Requests\EditProfileRequest;
 
 
 class UserController extends Controller
@@ -64,7 +66,7 @@ class UserController extends Controller
 
 	public function login()
 	{
-		Session::put('url.intended', URL::previous());
+		//Session::put('url.intended', URL::previous());
 
 		return view('layouts.secondary', [
 			'page' => 'pages.auth',
@@ -88,7 +90,7 @@ class UserController extends Controller
 		}
 
 		//return Redirect::to(Session::get('url.intended')); //Не работает, если пользователь сделает ошибку при вводе данных
-		return Redirect::intended();//редиректит на главную страницу, а не туда, куда шел пользователь
+		return Redirect::intended(route('mainPage'));
 	}
 
 	public function logout()
@@ -96,6 +98,44 @@ class UserController extends Controller
 		Auth::logout();
 
 		return back();
+	}
+
+	public function profile($id)
+	{
+		$user = User::find($id);
+
+		return view('layouts.secondary', [
+			'page' => 'pages.profile',
+			'title' => 'Личный кабинет',
+			'user' => $user
+		]);
+	}
+
+	public function profilePost($id, EditProfileRequest $request)
+	{
+		$user = User::find($id);
+	
+		Validator::make([$request->input('email')], [
+    		'email' => [
+        		'required',
+        		Rule::unique('users')->ignore($user->id),
+   			],
+		]);
+
+		$user->update([
+    		'email' => $request->input('email')
+		]);
+
+			
+    	$user->profile()->update([
+        	'name' => $request->input('name'),
+        	'birthdate' => $request->input('birthdate'),
+            'phone' => $request->input('phone')
+    	]);	
+
+        return redirect()
+            ->route('mainPage')
+            ->with('message', 'Личные данные успешно изменены!');
 	}
 
 }
